@@ -1,0 +1,42 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  go:
+    name: Go provider (Terraform ${{ matrix.terraform }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: src/go
+    strategy:
+      fail-fast: false
+      matrix:
+        # Oldest supported release and the latest.
+        terraform: ["1.0.*", "latest"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: src/go/go.mod
+          cache-dependency-path: src/go/go.sum
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ matrix.terraform }}
+          terraform_wrapper: false
+      - run: go mod download
+      - run: go build -v ./...
+      - run: go vet ./...
+      - name: Check formatting
+        run: test -z "$(gofmt -l .)"
+      - name: Unit and acceptance tests
+        env:
+          TF_ACC: "1"
+        run: go test -v -cover -timeout=10m ./...
