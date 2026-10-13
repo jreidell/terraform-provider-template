@@ -1,6 +1,6 @@
 # Modernization notes
 
-What changed between the original example (`terraform-plugin-sdk/v2` v2.35.0, October 2024) and the Go template in `src/go`, and why. Background on the library choice is in [provider-development-options.md](provider-development-options.md).
+What changed between the original example (`terraform-plugin-sdk/v2` v2.35.0, October 2024) and the Go template in `src`, and why. Background on the library choice is in [provider-development-options.md](provider-development-options.md).
 
 ## Dependencies
 

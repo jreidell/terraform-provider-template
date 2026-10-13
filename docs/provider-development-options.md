@@ -94,7 +94,7 @@ Both can be used in principle, and neither is a good default.
 - **Java** has no SDK that this research found, so it means implementing the protocol from the `.proto` files. Distribution is also awkward. Terraform expects a single executable per platform, so a Java provider needs a GraalVM native image or a launcher script plus a bundled runtime. This point is an inference from how providers are installed, not something tested here.
 - Neither has a counterpart to `terraform-plugin-testing` or `terraform-plugin-docs`.
 
-Recommendation: keep Go as the reference implementation. If a team's API logic lives in C# or Java, the lower-risk design is a thin Go provider that calls that code over HTTP or gRPC, which is the shape this template already has. A C# variant under `src/csharp` would be a reasonable experiment as long as it is labeled unsupported.
+Recommendation: keep Go as the reference implementation. If a team's API logic lives in C# or Java, the lower-risk design is a thin Go provider that calls that code over HTTP or gRPC, which is the shape this template already has.
 
 ## Sources
 

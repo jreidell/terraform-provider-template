@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 15
     defaults:
       run:
-        working-directory: src/go
+        working-directory: src
     strategy:
       fail-fast: false
       matrix:
@@ -25,8 +25,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version-file: src/go/go.mod
-          cache-dependency-path: src/go/go.sum
+          go-version-file: src/go.mod
+          cache-dependency-path: src/go.sum
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: ${{ matrix.terraform }}
