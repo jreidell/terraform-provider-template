@@ -1,0 +1,51 @@
+# Provider binaries
+terraform-provider-*
+*.exe
+bin/
+dist/
+
+# Go
+*.test
+*.out
+go.work
+go.work.sum
+
+# Terraform working files
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform files that commonly hold credentials
+*.tfvars
+*.tfvars.json
+*.tfrc
+.terraformrc
+terraform.rc
+
+# Secrets and keys
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.gpg
+*.asc
+
+# Terragrunt
+.terragrunt-cache/
+
+# Editors, tools, and OS
+.idea/
+.vscode/
+.claude/settings.local.json
+.DS_Store
+Thumbs.db
